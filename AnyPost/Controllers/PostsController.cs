@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AnyPost.Data;
 using AnyPost.Models;
+using System.Security.Claims;
 
 namespace AnyPost.Controllers
 {
@@ -58,6 +59,10 @@ namespace AnyPost.Controllers
         {
             if (ModelState.IsValid)
             {
+                post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                post.UserName = User.FindFirstValue(ClaimTypes.Email);
+                post.PostDate = DateTime.Today;
+                post.Rating = 0;
                 _context.Add(post);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
