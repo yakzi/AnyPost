@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AnyPost.Models;
 
 namespace AnyPost.Data
 {
@@ -12,5 +13,6 @@ namespace AnyPost.Data
             : base(options)
         {
         }
+        public DbSet<AnyPost.Models.Post> Post { get; set; }
     }
 }
