@@ -20,11 +20,11 @@
             <h5>@Html.DisplayFor(modelItem => item.Title)</h5> 
         </div>
         <div class="card-body">
-            <h6 class="card-text">@Html.DisplayFor(modelItem => item.Content)</h6>
+            <ee class="card-text">@Html.DisplayFor(modelItem => item.Content)</ee>
         </div>
         <div class="card-footer text-muted ">
             Posted by: @Html.DisplayFor(modelItem => item.UserName),
-            @Html.DisplayFor(modelItem => item.PostDate.Date)
+            @Html.DisplayFor(modelItem => item.PostDate)
             <br />
             <p class="@(item.Rating > 0? "green" : item.Rating == 0? "blue" : "red")">Rating: <b>@Html.DisplayFor(modelItem => item.Rating)</b></p>
             <div>

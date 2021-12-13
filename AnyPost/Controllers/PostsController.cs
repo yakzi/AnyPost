@@ -63,7 +63,7 @@ namespace AnyPost.Controllers
             {
                 post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 post.UserName = User.FindFirstValue(ClaimTypes.Email);
-                post.PostDate = DateTime.Today;
+                post.PostDate = DateTime.Now;
                 post.Rating = 0;
                 _context.Add(post);
                 await _context.SaveChangesAsync();
