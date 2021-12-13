@@ -19,11 +19,11 @@
         <div class="card-body">
             <h6 class="card-text">@Html.DisplayFor(modelItem => item.Content)</h6>
         </div>
-        <div class="card-footer text-muted row no-gutters">
+        <div class="card-footer text-muted ">
             Posted by: @Html.DisplayFor(modelItem => item.UserName),
             @Html.DisplayFor(modelItem => item.PostDate.Date)
             <br />
-            Rating: @Html.DisplayFor(modelItem => item.Rating)
+            <p class="@(item.Rating > 0? "green" : item.Rating == 0? "blue" : "red")">Rating: <b>@Html.DisplayFor(modelItem => item.Rating)</b></p>
             <form method="post" asp-controller="Posts" asp-action="RatingUp" asp-route-id="@item.Id">
                 <input type="submit" value="+" class="btn btn-outline-success" />
             </form>
