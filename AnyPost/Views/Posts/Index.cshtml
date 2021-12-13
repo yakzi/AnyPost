@@ -34,6 +34,7 @@
                 <form method="post" asp-controller="Posts" asp-action="RatingDown" asp-route-id="@item.Id">
                     <input type="submit" value="-" class="btn btn-outline-danger btn-sm bb" style="float: left; !important " />
                 </form>
+                <a style="float: right; !important" asp-action="Details" asp-route-id="@item.Id">Comments</a>
             </div>
         </div>
     </div>
