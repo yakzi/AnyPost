@@ -24,7 +24,7 @@ namespace AnyPost.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Post.OrderByDescending(i => i.PostDate).ToListAsync());
+            return View(await _context.Post.OrderByDescending(i => i.Rating).ToListAsync());
         }
 
         // GET: Posts/Details/5
