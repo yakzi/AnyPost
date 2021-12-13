@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AnyPost.Data;
 using AnyPost.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AnyPost.Controllers
 {
@@ -23,7 +24,7 @@ namespace AnyPost.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Post.ToListAsync());
+            return View(await _context.Post.OrderByDescending(i => i.PostDate).ToListAsync());
         }
 
         // GET: Posts/Details/5
@@ -45,6 +46,7 @@ namespace AnyPost.Controllers
         }
 
         // GET: Posts/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -52,7 +54,7 @@ namespace AnyPost.Controllers
 
         // POST: Posts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Content,PostDate,Rating,UserId,UserName,Tags")] Post post)
@@ -118,7 +120,7 @@ namespace AnyPost.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(post);
+            return View();
         }
 
         // GET: Posts/Delete/5
@@ -138,6 +140,18 @@ namespace AnyPost.Controllers
 
             return View(post);
         }
+
+        //[HttpPost, ActionName("RatingUp")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> RatingUp(int id)
+        //{
+        //    // var record6 = dbContext.TestModels.Where(record => record.ID == 4).FirstOrDefault();
+        //    var post = new Post { Id = id }; //await _context.Post.FindAsync(id);
+        //    post.Rating++;
+        //    _context.Post.Update(post);
+        //    _context.SaveChanges();
+        //    return Ok();
+        //}
 
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
