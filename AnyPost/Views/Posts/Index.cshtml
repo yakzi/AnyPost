@@ -4,17 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Browse posts</h1>
+<div class="no-gutters">
+    <h1 style="display: inline-block ">Browse posts</h1>
 
-<button class="addpost">
-    <a asp-action="Create">Add a post!</a>
-</button>
+    <button class="addpost">
+        <a asp-action="Create"><b>Or add a new one!</b></a>
+    </button>
+</div>
+
 
 @foreach (var item in Model)
 {
-    <div class="card" style=" border: solid 1px #3498db; margin-top: 10px; margin-bottom: 10px; margin-left:0px">
-        <div class="card-header" style=" background-color: #f0f7fb;">
-            @Html.DisplayFor(modelItem => item.Title)
+    <div class="card">
+        <div class="card-header">
+            <h5>@Html.DisplayFor(modelItem => item.Title)</h5> 
         </div>
         <div class="card-body">
             <h6 class="card-text">@Html.DisplayFor(modelItem => item.Content)</h6>
@@ -24,12 +27,14 @@
             @Html.DisplayFor(modelItem => item.PostDate.Date)
             <br />
             <p class="@(item.Rating > 0? "green" : item.Rating == 0? "blue" : "red")">Rating: <b>@Html.DisplayFor(modelItem => item.Rating)</b></p>
-            <form method="post" asp-controller="Posts" asp-action="RatingUp" asp-route-id="@item.Id">
-                <input type="submit" value="+" class="btn btn-outline-success" />
-            </form>
-            <form method="post" asp-controller="Posts" asp-action="RatingDown" asp-route-id="@item.Id">
-                <input type="submit" value="-" class="btn btn-outline-danger" />
-            </form>
+            <div>
+                <form method="post" asp-controller="Posts" asp-action="RatingUp" asp-route-id="@item.Id">
+                    <input type="submit" value="+" class="btn btn-outline-success btn-sm" style="float: left; !important" />
+                </form>
+                <form method="post" asp-controller="Posts" asp-action="RatingDown" asp-route-id="@item.Id">
+                    <input type="submit" value="-" class="btn btn-outline-danger btn-sm bb" style="float: left; !important " />
+                </form>
+            </div>
         </div>
     </div>
 }

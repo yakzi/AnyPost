@@ -76,16 +76,21 @@ body {
 .card {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
-    background-color: #f0f7fb;
     background-position: 9px 0px;
     background-repeat: no-repeat;
     border: solid 1px #3498db;
     border-radius: 6px;
     line-height: 18px;
     overflow: hidden;
-    padding: 15px 60px;
+    padding-top: 2px;
+    margin-top: 10px; 
+    margin-bottom: 10px;
+    margin-left:0px
 }
 
+.card-header {
+    background-color: #f0f7fb;
+}
 .addpost {
     background-color: #f0f7fb;
     color: black;
@@ -93,16 +98,30 @@ body {
     margin: 2px;
     text-decoration: none;
     border-radius: 6px;
+    float: right;
+    margin-top: 10px;
+    padding: 8px
 }
 
 .red {
     color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .blue {
     color: blue;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .green {
     color: green;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.bb{
+    margin-left: 5px;
+    margin-right: 5px;
 }
