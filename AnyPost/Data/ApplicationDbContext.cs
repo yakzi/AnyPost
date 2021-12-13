@@ -14,5 +14,6 @@ namespace AnyPost.Data
         {
         }
         public DbSet<AnyPost.Models.Post> Post { get; set; }
+        public DbSet<AnyPost.Models.Comment> Comment { get; set; }
     }
 }
