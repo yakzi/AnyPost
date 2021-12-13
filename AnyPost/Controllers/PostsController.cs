@@ -141,17 +141,22 @@ namespace AnyPost.Controllers
             return View(post);
         }
 
-        //[HttpPost, ActionName("RatingUp")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> RatingUp(int id)
-        //{
-        //    // var record6 = dbContext.TestModels.Where(record => record.ID == 4).FirstOrDefault();
-        //    var post = new Post { Id = id }; //await _context.Post.FindAsync(id);
-        //    post.Rating++;
-        //    _context.Post.Update(post);
-        //    _context.SaveChanges();
-        //    return Ok();
-        //}
+        
+        public IActionResult RatingUp(int Id)
+        {
+            var record = _context.Post.Single(record => record.Id == Id);
+            record.Rating++;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult RatingDown(int Id)
+        {
+            var record = _context.Post.Single(record => record.Id == Id);
+            record.Rating--;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
 
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]

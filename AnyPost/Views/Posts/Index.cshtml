@@ -12,20 +12,24 @@
 
 @foreach (var item in Model)
 {
-<div class="card" style=" border: solid 1px #3498db; margin-top: 10px; margin-bottom: 10px; margin-left:0px">
-    <div class="card-header" style=" background-color: #f0f7fb;">
-        @Html.DisplayFor(modelItem => item.Title)
+    <div class="card" style=" border: solid 1px #3498db; margin-top: 10px; margin-bottom: 10px; margin-left:0px">
+        <div class="card-header" style=" background-color: #f0f7fb;">
+            @Html.DisplayFor(modelItem => item.Title)
+        </div>
+        <div class="card-body">
+            <h6 class="card-text">@Html.DisplayFor(modelItem => item.Content)</h6>
+        </div>
+        <div class="card-footer text-muted row no-gutters">
+            Posted by: @Html.DisplayFor(modelItem => item.UserName),
+            @Html.DisplayFor(modelItem => item.PostDate.Date)
+            <br />
+            Rating: @Html.DisplayFor(modelItem => item.Rating)
+            <form method="post" asp-controller="Posts" asp-action="RatingUp" asp-route-id="@item.Id">
+                <input type="submit" value="+" class="btn btn-outline-success" />
+            </form>
+            <form method="post" asp-controller="Posts" asp-action="RatingDown" asp-route-id="@item.Id">
+                <input type="submit" value="-" class="btn btn-outline-danger" />
+            </form>
+        </div>
     </div>
-    <div class="card-body">
-        <h6 class="card-text">@Html.DisplayFor(modelItem => item.Content)</h6>
-    </div>
-    <div class="card-footer text-muted row no-gutters">
-        Posted by: @Html.DisplayFor(modelItem => item.UserName),
-       @Html.DisplayFor(modelItem => item.PostDate.Date)
-        @*<form asp-action="RatingUp">
-            <input type="hidden" asp-for="@item.Id" />
-            <input type="submit" value="eeeeee" class="btn btn-danger" />
-        </form>*@
-    </div>
-</div>
 }
