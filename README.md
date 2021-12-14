@@ -11,12 +11,12 @@
 * [Screenshots](#screenshots)
 
 ## Introduction
-Simple web application, made for learning purposes. It allows user to register, browse posts, create and rate them. Currently still beeing developed.
-
+Web application, which is kind of a simple discussion board. Users may create acoount, write posts, rate them, and add comments to them.
 ## Features
 * Create user account
 * Create post, with title, content, and tags (WIP)
 * Browse posts, with various order options, and by tags (WIP)
+* Add comments to posts
 * Rate posts
 
 ## Technologies
