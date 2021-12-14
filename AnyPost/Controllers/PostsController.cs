@@ -46,7 +46,7 @@ namespace AnyPost.Controllers
             }
 
             var postT =  _context.Post.Where(p => p.Id == id).First();
-            var comments = await _context.Comment.Where(c => c.PostId == id).ToListAsync();
+            var comments = await _context.Comment.Where(c => c.PostId == id).OrderByDescending(i => i.CommentDate).ToListAsync();
             return View((postT, comments));
         }
 

@@ -4,62 +4,40 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="no-gutters">
+    <h1 style="display: inline-block ">Post #@Html.DisplayFor(model => model.postT.Id)</h1>
 
-<div>
-    <h4>Post</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.Content)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.PostDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.PostDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.Rating)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.Rating)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.UserId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.UserId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.UserName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.UserName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.postT.Tags)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.postT.Tags)
-        </dd>
-    </dl>
+    <button class="addpost">
+        <a asp-action="Index">Back to posts</a>
+    </button>
 </div>
 
+<div class="card">
+    <div class="card-header">
+        <h5>@Html.DisplayFor(model => model.postT.Title)</h5>
+    </div>
+    <div class="card-body">
+        <ee class="card-text">@Html.DisplayFor(model => model.postT.Content)</ee>
+    </div>
+    <div class="card-footer text-muted ">
+        Posted by: @Html.DisplayFor(model => Model.postT.UserName),
+        @Html.DisplayFor(model => Model.postT.PostDate)
+        <br />
+        <p class="@(Model.postT.Rating > 0? "green" : Model.postT.Rating == 0? "blue" : "red")">Rating: <b>@Html.DisplayFor(model => Model.postT.Rating)</b></p>
+
+    </div>
+</div>
+<h3>Comments:</h3>
 @foreach (var item in Model.comments)
 {
-    <h5>@Html.DisplayFor(modelItem => item.CommentContent)</h5>
-
+    <div class="card">
+        <div class="card-body">
+            <ee class="card-text">@Html.DisplayFor(modelItem => item.CommentContent)</ee>
+        </div>
+        <div class="card-footer text-muted ">
+            <aa style="float: left" ;>Posted by: @Html.DisplayFor(modelItem => item.UserName)</aa>
+            <aa style="float: left" ;>, @Html.DisplayFor(modelItem => item.CommentDate)</aa>
+        </div>
+    </div>
 }
-<div>
-    <a asp-action="Index">Back to posts</a>
-</div>
+
