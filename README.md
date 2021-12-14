@@ -1,8 +1,7 @@
 <h1 align="center">
-  <img src="./anypostlogo.png" alt="AnyPost Logo/>
+ <strong>AnyPost</strong>
  <br/><br/>
 </h1>
-
 
 ## Table of contents
 * [Introduction](#introduction)
