@@ -24,6 +24,9 @@ namespace AnyPost.Controllers
         // GET: Posts
         public async Task<IActionResult> Index()
         {
+            //var posts = await _context.Post.OrderByDescending(i => i.Rating).ToListAsync();
+            //var comments = await _context.Comment.ToListAsync();
+            //return View((posts,comments));
             return View(await _context.Post.OrderByDescending(i => i.Rating).ToListAsync());
         }
 
@@ -42,7 +45,9 @@ namespace AnyPost.Controllers
                 return NotFound();
             }
 
-            return View(post);
+            var postT =  _context.Post.Where(p => p.Id == id).First();
+            var comments = await _context.Comment.Where(c => c.PostId == id).ToListAsync();
+            return View((postT, comments));
         }
 
         // GET: Posts/Create

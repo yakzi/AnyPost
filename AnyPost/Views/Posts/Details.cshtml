@@ -1,4 +1,4 @@
-﻿@model AnyPost.Models.Post
+﻿@model (AnyPost.Models.Post postT, List<AnyPost.Models.Comment> comments)
 
 @{
     ViewData["Title"] = "Details";
@@ -10,51 +10,56 @@
     <h4>Post</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.Title)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.Title)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Content)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.Content)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Content)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.Content)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostDate)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.PostDate)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostDate)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.PostDate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.Rating)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.Rating)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserId)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.UserId)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.UserId)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.UserName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.UserName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tags)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.postT.Tags)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tags)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postT.Tags)
         </dd>
     </dl>
 </div>
+
+@foreach (var item in Model.comments)
+{
+    <h5>@Html.DisplayFor(modelItem => item.CommentContent)</h5>
+
+}
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to posts</a>
 </div>
