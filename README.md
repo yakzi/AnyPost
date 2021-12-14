@@ -1,6 +1,5 @@
 <h1 align="center">
  <img src="./anypostlogo.png" alt="AnyPost Logo"/>
- <br/><br/>
 </h1>
 
 ## Table of contents
