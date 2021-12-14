@@ -1,5 +1,5 @@
 <h1 align="center">
- <strong>AnyPost</strong>
+  <img src="./anypostlogo.png" alt="AnyPost Logo/>
  <br/><br/>
 </h1>
 
