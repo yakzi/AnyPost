@@ -1,4 +1,4 @@
-﻿@model (AnyPost.Models.Post postT, List<AnyPost.Models.Comment> comments)
+﻿@model (AnyPost.Models.Post postT, List<AnyPost.Models.Comment> comments, AnyPost.Models.Comment newComment)
 
 @{
     ViewData["Title"] = "Details";
@@ -41,3 +41,17 @@
     </div>
 }
 
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddComment">
+            komentarz
+            <div class="form-group">
+                <input asp-for="newComment.CommentContent" class="form-control" />
+                <span asp-validation-for="newComment.CommentContent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

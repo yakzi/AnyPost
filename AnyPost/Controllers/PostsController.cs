@@ -47,7 +47,19 @@ namespace AnyPost.Controllers
 
             var postT =  _context.Post.Where(p => p.Id == id).First();
             var comments = await _context.Comment.Where(c => c.PostId == id).OrderByDescending(i => i.CommentDate).ToListAsync();
-            return View((postT, comments));
+            AnyPost.Models.Comment newComment = new ();
+            return View((postT, comments, newComment));
+        }
+
+        public async Task<IActionResult> AddComment([Bind("Id,PostId,CommentContent,CommentDate,UserId,UserName")] Comment newComment)
+        {
+            newComment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            newComment.UserName = User.FindFirstValue(ClaimTypes.Email);
+            newComment.CommentDate = DateTime.Now;
+            _context.Add(newComment);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Details", new { id = newComment.PostId });
+            //RedirectToAction()
         }
 
         // GET: Posts/Create
@@ -56,6 +68,9 @@ namespace AnyPost.Controllers
         {
             return View();
         }
+
+        //TODO: DODAJ DO KONTROLERA KOMENTARZA AKCJE TWORZENIA, WYWOLAJ JA Z WIDOKU DETAILS.CSHTML TYLKO ZE 
+        //ON CI NIE ZBINDUJE TEGO BO MUSIALBYS JAKOS Z VIEW PRZESLAC DO TAMTEGO KONTROLERA??
 
         // POST: Posts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
