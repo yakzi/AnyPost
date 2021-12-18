@@ -5,7 +5,7 @@
 }
 
 <div class="no-gutters">
-    <h1 style="display: inline-block ">Post #@Html.DisplayFor(model => model.postT.Id)</h1>
+    <h2 style="display: inline-block ">Post #@Html.DisplayFor(model => model.postT.Id)</h2>
 
     <button class="addpost">
         <a asp-action="Index">Back to posts</a>
@@ -27,7 +27,7 @@
 
     </div>
 </div>
-<h3>Comments:</h3>
+<h4>Comments:</h4>
 @foreach (var item in Model.comments)
 {
     <div class="card">
@@ -37,21 +37,21 @@
         <div class="card-footer text-muted ">
             <aa style="float: left">Posted by: @Html.DisplayFor(modelItem => item.UserName)</aa>
             <aa style="float: left">, @Html.DisplayFor(modelItem => item.CommentDate)</aa>
-        </div>
+        </div> 
     </div>
 }
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col" style="min-width: 100%">
         <form asp-action="AddComment">
-            <h3>Add new comment</h3>
+            <h4>Add new comment</h4>
             <div class="form-group">
                 <input asp-for="newComment.PostId" type="hidden" />
-                <textarea asp-for="newComment.CommentContent" class="form-control"></textarea>
+                <textarea asp-for="newComment.CommentContent" class="form-control" rows="6" style="resize: none;"></textarea>
                 <span asp-validation-for="newComment.CommentContent" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="addpost" />
+                <input type="submit" value="Add!" class="addpost" />
             </div>
         </form>
     </div>
