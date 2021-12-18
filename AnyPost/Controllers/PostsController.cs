@@ -47,18 +47,18 @@ namespace AnyPost.Controllers
 
             var postT =  _context.Post.Where(p => p.Id == id).First();
             var comments = await _context.Comment.Where(c => c.PostId == id).OrderByDescending(i => i.CommentDate).ToListAsync();
-            AnyPost.Models.Comment newComment = new ();
+            AnyPost.Models.Comment newComment = new Comment { PostId = id.Value };
             return View((postT, comments, newComment));
         }
 
-        public async Task<IActionResult> AddComment([Bind("Id,PostId,CommentContent,CommentDate,UserId,UserName")] Comment newComment)
+        public async Task<IActionResult> AddComment([Bind("Id,PostId,CommentContent,CommentDate,UserId,UserName")] Comment Item3)
         {
-            newComment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            newComment.UserName = User.FindFirstValue(ClaimTypes.Email);
-            newComment.CommentDate = DateTime.Now;
-            _context.Add(newComment);
+            Item3.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Item3.UserName = User.FindFirstValue(ClaimTypes.Email);
+            Item3.CommentDate = DateTime.Now;
+            _context.Add(Item3);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Details", new { id = newComment.PostId });
+            return RedirectToAction("Details", new { id = Item3.PostId });
             //RedirectToAction()
         }
 
