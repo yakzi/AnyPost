@@ -10,14 +10,24 @@
     <button class="addpost">
         <a asp-action="Create"><b>Or add a new one!</b></a>
     </button>
+    @using (Html.BeginForm())
+    {
+        <h6>
+            Browse posts by specified tag: @Html.TextBox("tags")
+            <input type="submit" value="Search" />
+        </h6>
+    }
 </div>
+
+
+
 
 
 @foreach (var item in Model)
 {
     <div class="card">
         <div class="card-header">
-            <h5>@Html.DisplayFor(modelItem => item.Title)</h5> 
+            <h5>@Html.DisplayFor(modelItem => item.Title)</h5>
         </div>
         <div class="card-body">
             <ee class="card-text">@Html.DisplayFor(modelItem => item.Content)</ee>

@@ -22,11 +22,12 @@ namespace AnyPost.Controllers
         }
 
         // GET: Posts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string tags)
         {
-            //var posts = await _context.Post.OrderByDescending(i => i.Rating).ToListAsync();
-            //var comments = await _context.Comment.ToListAsync();
-            //return View((posts,comments));
+            if(!String.IsNullOrEmpty(tags))
+            {
+                return View(await _context.Post.OrderByDescending(i => i.Rating).Where(x => x.Tags.Contains(tags) ).ToListAsync());
+            }
             return View(await _context.Post.OrderByDescending(i => i.Rating).ToListAsync());
         }
 
@@ -68,9 +69,6 @@ namespace AnyPost.Controllers
         {
             return View();
         }
-
-        //TODO: DODAJ DO KONTROLERA KOMENTARZA AKCJE TWORZENIA, WYWOLAJ JA Z WIDOKU DETAILS.CSHTML TYLKO ZE 
-        //ON CI NIE ZBINDUJE TEGO BO MUSIALBYS JAKOS Z VIEW PRZESLAC DO TAMTEGO KONTROLERA??
 
         // POST: Posts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
