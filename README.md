@@ -27,5 +27,5 @@ Web application, which is kind of a simple discussion board. Users may create ac
 ## Screenshots
 <p align="center">
  <img src="./anypostv011.jpg" alt="Screenshot form AnyPost application"/>
- <img src="./anypostv011c.jpg" alt="Screenshot form AnyPost application"/>
+ <img src="./anypostv011ca.jpg" alt="Screenshot form AnyPost application"/>
 </p>
