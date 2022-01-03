@@ -10,12 +10,24 @@
 
 ## Introduction
 Web application, which is kind of a simple discussion board. Users may create acoount, write posts, rate them, and add comments to them.
+
 ## Features
+Already done:
 * Create user account
-* Create post, with title, content, and tags (WIP)
-* Browse posts, with various order options, and by tags (WIP)
+* Create post, with title, content, and tags
+* Browse posts, with sorting by tags
 * Add comments to posts
 * Rate posts
+
+Currently developing:
+* Admin panel
+* More sorting/filtering options
+
+Further plans:
+* User account personalization
+* Messaging system
+* User reputation
+* Promoted posts
 
 ## Technologies
 * ASP.NET Core (MVC)
