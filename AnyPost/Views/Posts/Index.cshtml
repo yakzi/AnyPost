@@ -12,9 +12,10 @@
     </button>
     @using (Html.BeginForm())
     {
+        <hr/>
         <h6>
             Browse posts by specified tag: @Html.TextBox("tags")
-            <input type="submit" value="Search" />
+            <input type="submit" class="tagbutton" value="Search" />
         </h6>
     }
 </div>

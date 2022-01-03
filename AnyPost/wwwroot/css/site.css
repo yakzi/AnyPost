@@ -129,3 +129,13 @@ body {
 .notags{
     display: none;
 }
+
+.tagbutton {
+    background-color: #f0f7fb;
+    color: black;
+    border: solid 0.5px #3498db;
+    margin: 2px;
+    text-decoration: none;
+    border-radius: 6px;
+    padding: 3px
+}
