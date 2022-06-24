@@ -10,6 +10,7 @@
 
 ## Introduction
 Web application, which is kind of a simple discussion board. Users may create acoount, write posts, rate them, and add comments to them.
+<b>This web app was basically one of my first private projects, while starting journey with ASP.NET - so, don't look at it, seriously. Or take a quick look, if You want to see my progress..</b>
 
 ## Features
 Already done:
